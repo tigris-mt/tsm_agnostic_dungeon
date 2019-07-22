@@ -79,6 +79,7 @@ minetest.register_on_generated(function(minp, maxp)
 						) or {}) do
 							inv:add_item(chest.list, stack)
 						end
+						inv:set_list(chest.list, shuffled_table(inv:get_list(chest.list)))
 					end
 				end
 			end
