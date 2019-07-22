@@ -1,3 +1,17 @@
+local function shuffled_table(t)
+	local ret = {}
+	local keys = {}
+	for k in pairs(t) do
+		table.insert(keys, k)
+	end
+	while #keys > 0 do
+		local ki = math.random(#keys)
+		table.insert(ret, t[keys[ki]])
+		table.remove(keys, ki)
+	end
+	return ret
+end
+
 tsm_agnostic_dungeon = {
 	-- Chest node.
 	chest = function(pos)
@@ -45,7 +59,7 @@ minetest.register_on_generated(function(minp, maxp)
 				local ratio = tsm_agnostic_dungeon.ratio(pos)
 				local loot = tsm_agnostic_dungeon.loot(pos)
 
-				local shuffled = table.shuffled(loot.list)
+				local shuffled = shuffled_table(loot.list)
 				local ti = 0
 
 				for i=1,loot.count do
@@ -68,7 +82,7 @@ minetest.register_on_generated(function(minp, maxp)
 					end
 				end
 			end
-		end, table.shuffled(g.dungeon))
+		end, shuffled_table(g.dungeon))
 	end
 end)
 
