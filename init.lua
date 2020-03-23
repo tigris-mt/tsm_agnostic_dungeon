@@ -89,11 +89,11 @@ end)
 
 if minetest.get_modpath("aurum_realms") then
 	function tsm_agnostic_dungeon.ratio(pos)
-		local realm = aurum.pos_to_realm(pos)
+		local realm = screalms.pos_to_realm(pos)
 		if not realm then
 			return 0.5
 		end
-		local rpos = aurum.rpos(realm, pos)
-		return 0.5 + 0.5 * math.min(1, math.abs(rpos.y) / (aurum.realms.get(realm).local_box.b.y / 2))
+		local rpos = screalms.rpos(realm, pos)
+		return 0.5 + 0.5 * math.min(1, math.abs(rpos.y) / (screalms.get(realm).local_box.b.y / 2))
 	end
 end
