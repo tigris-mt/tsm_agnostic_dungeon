@@ -87,7 +87,7 @@ minetest.register_on_generated(function(minp, maxp)
 	end
 end)
 
-if minetest.get_modpath("aurum_realms") then
+if minetest.get_modpath("screalms") then
 	function tsm_agnostic_dungeon.ratio(pos)
 		local realm = screalms.pos_to_realm(pos)
 		if not realm then
